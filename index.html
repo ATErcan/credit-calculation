@@ -30,11 +30,15 @@
     <section class="credit container">
       <div class="input-group d-flex flex-column p-2 pt-0">
         <label for="credit" class="mb-2">Loan Type:</label>
-        <select name="credit" id="credit" class="p-2 rounded-2 input-box">
+        <select
+          name="credit"
+          id="credit"
+          class="p-2 rounded-2 input-box credit-type"
+        >
           <option value="" selected>Choose</option>
-          <option value="housing-loan">Housing Loan</option>
-          <option value="financial-loan">Financial Loan</option>
-          <option value="car-loan">Car Loan</option>
+          <option value="Housing Loan">Housing Loan</option>
+          <option value="Financial Loan">Financial Loan</option>
+          <option value="Car Loan">Car Loan</option>
         </select>
       </div>
       <div class="form">
@@ -45,7 +49,7 @@
               type="number"
               name="expiry"
               id="expiry"
-              class="p-2 rounded-2 input-box"
+              class="p-2 rounded-2 input-box expiry"
             />
           </div>
           <div class="input-group d-flex flex-column p-2">
@@ -54,14 +58,17 @@
               type="number"
               name="amount"
               id="amount"
-              class="p-2 rounded-2 input-box"
+              class="p-2 rounded-2 input-box amount"
             />
           </div>
           <div class="calc-btn p-2 mt-3">
-            <button class="btn btn-dark w-100">Calculate</button>
+            <button type="button" class="btn btn-dark w-100 calculator">
+              Calculate
+            </button>
           </div>
         </form>
       </div>
+      <div class="result"></div>
     </section>
     <!-- JavaScript Bundle with Popper -->
     <script
