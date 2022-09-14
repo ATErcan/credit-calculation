@@ -3,9 +3,7 @@
   margin: 0;
   padding: 0;
 }
-.navbar {
-  padding: 2.2rem;
-}
-.navbar .logo {
-  width: 30%;
+.credit .input-box {
+  outline: none;
+  border: 1px solid #aaa;
 }
