@@ -3,9 +3,8 @@ const expiry = document.querySelector(".expiry");
 const amount = document.querySelector(".amount");
 const calculate = document.querySelector(".calculator");
 
-
-
-calculate.addEventListener("click", () => {
+// The function that creates table
+const getTable = (rate) => {
   const loanType = loans.options[loans.selectedIndex].value;
 
   const heading = document.createElement("h2");
@@ -29,16 +28,24 @@ calculate.addEventListener("click", () => {
     }
     tblBody.appendChild(row);
   }
+
   table.appendChild(tblBody);
   document.querySelector(".result").appendChild(table);
   table.style.width = "100%";
-  // table.setAttribute("border", "2");
   table.style.border = "1px solid #f00";
 
+  // The loan calculation formula
+  const interest = rate;
+  const interestRate = rate / 100;
+  const installment = (
+    (interestRate * (1 + interestRate) ** expiry.value * amount.value) /
+    ((1 + interestRate) ** expiry.value - 1)
+  ).toFixed(2);
+  totalAmount = (installment * expiry.value).toFixed(2);
 
   tblBody.children[0].children[0].innerText = "Amount";
   tblBody.children[0].children[1].innerText = `${amount.value} ₺`;
-  console.log(amount.value)
+
   tblBody.children[0].children[2].innerText = "Loan Type";
   tblBody.children[0].children[3].innerText = `${loanType}`;
 
@@ -48,65 +55,39 @@ calculate.addEventListener("click", () => {
 
   tblBody.children[2].children[0].innerText = "Total Amount";
   tblBody.children[2].children[2].innerText = "Installment Amount";
-  
 
-  if (loanType === "Housing Loan") {
-    const interest = 1.29;
-    const interestRate = 1.29 / 100;
-     const installment = (((interestRate * ((1 + interestRate) ** expiry.value)) * amount.value) / (((1 + interestRate) ** expiry.value) - 1)).toFixed(2);
-     totalAmount = (installment * expiry.value).toFixed(2);
+  tblBody.children[1].children[3].innerText = `${interest}`;
+  tblBody.children[2].children[1].innerText = `${totalAmount}`;
+  tblBody.children[2].children[3].innerText = `${installment}`;
+};
 
-    tblBody.children[1].children[3].innerText = `${interest}`;
-    tblBody.children[2].children[1].innerText = `${totalAmount}`;
-    tblBody.children[2].children[3].innerText = `${installment}`;
-  }
-  else if (loanType === "Financial Loan") {
-    const interest = 1.99;
-    const interestRate = 1.99 / 100;
-     const installment = (((interestRate * ((1 + interestRate) ** expiry.value)) * amount.value) / (((1 + interestRate) ** expiry.value) - 1)).toFixed(2);
-     totalAmount = (installment * expiry.value).toFixed(2);
+calculate.addEventListener("click", () => {
+  const loanType = loans.options[loans.selectedIndex].value;
 
-    tblBody.children[1].children[3].innerText = `${interest}`;
-    tblBody.children[2].children[1].innerText = `${totalAmount}`;
-    tblBody.children[2].children[3].innerText = `${installment}`;
-  }
-  else if (loanType === "Car Loan") {
-    const interest = 1.79;
-    const interestRate = 1.79 / 100;
-     const installment = (((interestRate * ((1 + interestRate) ** expiry.value)) * amount.value) / (((1 + interestRate) ** expiry.value) - 1)).toFixed(2);
-     totalAmount = (installment * expiry.value).toFixed(2);
-
-    tblBody.children[1].children[3].innerText = `${interest}`;
-    tblBody.children[2].children[1].innerText = `${totalAmount}`;
-    tblBody.children[2].children[3].innerText = `${installment}`;
-  }
-  else{
-    alert(`Choose a loan type genius(!)`);
-    heading.style.display = "none";
-    table.style.display = "none";
-    return;
-  }
   if (expiry.value < 0) {
     alert(
       `Do you mean you want to make a donation to our bank or are those negative numbers a joke?`
     );
-    heading.style.display = "none";
-    table.style.display = "none";
   } else if (expiry.value === "") {
     alert(`Yeah... You should pay our money back in some time...`);
-    heading.style.display = "none";
-    table.style.display = "none";
+  } else if (expiry.value > 120) {
+    alert("Our bank can't give more than 120 months for expiration date.");
   } else if (amount.value < 0) {
     alert(
       `Do you mean you want to make a donation to our bank or are those negative numbers a joke?`
     );
-    heading.style.display = "none";
-    table.style.display = "none";
   } else if (amount.value === "") {
     alert(`Do you want any money or not?`);
-    heading.style.display = "none";
-    table.style.display = "none";
+  } else {
+    if (loanType === "Housing Loan") {
+      getTable(1.29);
+    } else if (loanType === "Financial Loan") {
+      getTable(1.99);
+    } else if (loanType === "Car Loan") {
+      getTable(1.79);
+    } else {
+      alert(`Choose a loan type genius(!)`);
+      return;
+    }
   }
-
-  // const houseLoan = document.querySelector(".credit-type").children[1];
 });
