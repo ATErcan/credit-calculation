@@ -10,9 +10,9 @@ const getTable = (rate) => {
   const heading = document.createElement("h2");
   heading.innerText = "Loan Info";
   document.querySelector(".result").appendChild(heading);
-  heading.className = "text-warning";
+  heading.className = "text-white";
   heading.style.marginTop = "1rem";
-  heading.style.paddingLeft = "1rem";
+  heading.style.backgroundColor = "#333";
 
   const table = document.createElement("table");
   const tblBody = document.createElement("tbody");
@@ -27,14 +27,16 @@ const getTable = (rate) => {
       const cellText = document.createTextNode(``);
       cell.appendChild(cellText);
       row.appendChild(cell);
-      cell.style.border = "2px solid #f00";
+      cell.style.border = "2px solid #fff";
       cell.style.padding = "0.5rem";
+      cell.style.color = "#fff";
     }
     tblBody.appendChild(row);
   }
 
   table.appendChild(tblBody);
   document.querySelector(".result").appendChild(table);
+  table.style.backgroundColor = "#333";
 
   // The loan calculation formula
   const interest = rate;

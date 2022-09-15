@@ -3,7 +3,28 @@
   margin: 0;
   padding: 0;
 }
+body {
+  background-image: url(./img/bg-mini.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50% 100%;
+}
+header h1 {
+  text-shadow: 2px 2px 15px #000;
+}
 .credit .input-box {
   outline: none;
   border: 1px solid #aaa;
+}
+
+@media screen and (min-width: 576px) and (max-width: 1024px) {
+  body {
+    background-image: url(./img/bg.jpg);
+  }
+}
+@media screen and (min-width: 1024px) {
+  body {
+    background-image: url("https://wallpapers.com/images/hd/finance-plan-and-business-staff-rtadittddsy4efqm.webp");
+  }
 }
