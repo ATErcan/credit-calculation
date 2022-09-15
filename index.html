@@ -29,7 +29,7 @@
 
     <section class="credit container">
       <div class="input-group d-flex flex-column p-2 pt-0">
-        <label for="credit" class="mb-2">Loan Type:</label>
+        <label for="credit" class="mb-2 text-white">Loan Type:</label>
         <select
           name="credit"
           id="credit"
@@ -44,16 +44,18 @@
       <div class="form">
         <form>
           <div class="input-group d-flex flex-column p-2">
-            <label for="expiry" class="mb-2">Expiry:</label>
+            <label for="expiry" class="mb-2 text-white">Expiry:</label>
             <input
               type="number"
               name="expiry"
               id="expiry"
               class="p-2 rounded-2 input-box expiry"
+              min="0"
+              max="120"
             />
           </div>
           <div class="input-group d-flex flex-column p-2">
-            <label for="amount" class="mb-2">Amount:</label>
+            <label for="amount" class="mb-2 text-white">Amount:</label>
             <input
               type="number"
               name="amount"
@@ -64,6 +66,11 @@
           <div class="calc-btn p-2 mt-3">
             <button type="button" class="btn btn-dark w-100 calculator">
               Calculate
+            </button>
+          </div>
+          <div class="p-2">
+            <button type="button" class="btn btn-dark w-100 reset-btn">
+              Reset
             </button>
           </div>
         </form>

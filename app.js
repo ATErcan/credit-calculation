@@ -69,6 +69,14 @@ const getTable = (rate) => {
   tblBody.children[1].children[3].innerText = `${interest}`;
   tblBody.children[2].children[1].innerText = `${totalAmount}`;
   tblBody.children[2].children[3].innerText = `${installment}`;
+
+  document.querySelector(".reset-btn").addEventListener("click", () => {
+    heading.style.display = "none";
+    table.style.display = "none";
+    expiry.value = "";
+    amount.value = "";
+    loans.options.selectedIndex = 0;
+  });
 };
 
 calculate.addEventListener("click", () => {
@@ -99,5 +107,16 @@ calculate.addEventListener("click", () => {
       alert(`Choose a loan type genius(!)`);
       return;
     }
+  }
+});
+
+expiry.addEventListener("keydown", (event) => {
+  if (event.keyCode === 13) {
+    calculate.click();
+  }
+});
+amount.addEventListener("keydown", (event) => {
+  if (event.keyCode === 13) {
+    calculate.click();
   }
 });
