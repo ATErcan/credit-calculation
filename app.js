@@ -16,23 +16,25 @@ const getTable = (rate) => {
 
   const table = document.createElement("table");
   const tblBody = document.createElement("tbody");
+  let row;
+  let cell;
 
   for (let i = 0; i < 3; i++) {
-    const row = document.createElement("tr");
+    row = document.createElement("tr");
 
     for (let j = 0; j < 4; j++) {
-      const cell = document.createElement("td");
+      cell = document.createElement("td");
       const cellText = document.createTextNode(``);
       cell.appendChild(cellText);
       row.appendChild(cell);
+      cell.style.border = "2px solid #f00";
+      cell.style.padding = "0.5rem";
     }
     tblBody.appendChild(row);
   }
 
   table.appendChild(tblBody);
   document.querySelector(".result").appendChild(table);
-  table.style.width = "100%";
-  table.style.border = "1px solid #f00";
 
   // The loan calculation formula
   const interest = rate;
@@ -44,17 +46,23 @@ const getTable = (rate) => {
   totalAmount = (installment * expiry.value).toFixed(2);
 
   tblBody.children[0].children[0].innerText = "Amount";
+  tblBody.children[0].children[0].style.fontWeight = "bolder";
   tblBody.children[0].children[1].innerText = `${amount.value} ₺`;
 
   tblBody.children[0].children[2].innerText = "Loan Type";
+  tblBody.children[0].children[2].style.fontWeight = "bolder";
   tblBody.children[0].children[3].innerText = `${loanType}`;
 
   tblBody.children[1].children[0].innerText = "Expiry";
+  tblBody.children[1].children[0].style.fontWeight = "bolder";
   tblBody.children[1].children[1].innerText = `${expiry.value}`;
   tblBody.children[1].children[2].innerText = "Interest Rate";
+  tblBody.children[1].children[2].style.fontWeight = "bolder";
 
   tblBody.children[2].children[0].innerText = "Total Amount";
+  tblBody.children[2].children[0].style.fontWeight = "bolder";
   tblBody.children[2].children[2].innerText = "Installment Amount";
+  tblBody.children[2].children[2].style.fontWeight = "bolder";
 
   tblBody.children[1].children[3].innerText = `${interest}`;
   tblBody.children[2].children[1].innerText = `${totalAmount}`;
