@@ -22,6 +22,7 @@ label {
 .credit .input-box {
   outline: none;
   border: 1px solid #aaa;
+  background-color: #ddd;
 }
 
 @media screen and (min-width: 576px) and (max-width: 1024px) {
@@ -39,6 +40,6 @@ label {
         rgba(39, 39, 39, 0.9),
         rgba(39, 39, 39, 0.3)
       ),
-      url("https://wallpapers.com/images/hd/finance-plan-and-business-staff-rtadittddsy4efqm.webp");
+      url("https://wallpapers.com/images/hd/colorful-finance-reports-and-charts-sjfl27ehdupf10xz.webp");
   }
 }
