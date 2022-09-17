@@ -45,7 +45,7 @@ const getTable = (rate) => {
     (interestRate * (1 + interestRate) ** expiry.value * amount.value) /
     ((1 + interestRate) ** expiry.value - 1)
   ).toFixed(2);
-  totalAmount = (installment * expiry.value).toFixed(2);
+  const totalAmount = (installment * expiry.value).toFixed(2);
 
   tblBody.children[0].children[0].innerText = "Amount";
   tblBody.children[0].children[0].style.fontWeight = "bolder";
