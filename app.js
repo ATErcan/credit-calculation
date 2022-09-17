@@ -90,12 +90,16 @@ calculate.addEventListener("click", () => {
     alert(`Yeah... You should pay our money back in some time...`);
   } else if (expiry.value > 120) {
     alert("Our bank can't give more than 120 months for expiration date.");
+  } else if (expiry.value < 12) {
+    alert(`Expiration date can't be less than 12 months.`);
   } else if (amount.value < 0) {
     alert(
       `Do you mean you want to make a donation to our bank or are those negative numbers a joke?`
     );
   } else if (amount.value === "") {
     alert(`Do you want any money or not?`);
+  } else if (amount.value < 1000) {
+    alert(`We are not a charity. The loan amount can't be less than 1000₺`);
   } else {
     if (loanType === "Housing Loan") {
       getTable(1.29);
