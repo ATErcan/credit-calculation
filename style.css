@@ -22,6 +22,14 @@ label {
 .credit .input-box {
   outline: none;
   border: 1px solid #aaa;
+}
+.form,
+.dropdown {
+  max-width: 600px;
+  margin: auto;
+}
+.credit .input-group .input-box,
+form .input-group .input-box {
   background-color: #ddd;
 }
 
